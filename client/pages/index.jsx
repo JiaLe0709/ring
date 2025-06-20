@@ -40,66 +40,70 @@ const Home = ({ posts }) => {
                     {posts && (
                         <div>
                             {posts.map((i, idx) => (
-                                <Card className="w-full" key={idx}>
-                                    <CardContent>
-                                        <Carousel className="w-full">
-                                            <CarouselContent>
-                                                <PhotoProvider>
-                                                    {i.image.map((img, imgIdx) => (
-                                                        <CarouselItem key={imgIdx}>
-                                                            <PhotoView
-                                                                src={
-                                                                    "_next/image?url=" +
-                                                                    encodeURIComponent(img.url) +
-                                                                    "&w=1080&q=100"
-                                                                }
-                                                            >
-                                                                <div>
-                                                                    <Image
-                                                                        quality={100}
-                                                                        src={img.url}
-                                                                        alt={`Image ${imgIdx}`}
-                                                                        className="aspect-video w-full rounded-2xl object-cover"
-                                                                        width={250}
-                                                                        height={200}
-                                                                        priority={false}
-                                                                    />
-                                                                </div>
-                                                            </PhotoView>
-                                                        </CarouselItem>
-                                                    ))}
-                                                </PhotoProvider>
-                                            </CarouselContent>
-                                        </Carousel>
-                                    </CardContent>
-                                    <CardHeader>
-                                        <CardTitle><p className={'text-xl'}>{i.date}</p></CardTitle>
-                                        <CardDescription className={'flex gap-2 overflow-x-auto'}>
-                                            <div className="">
-                                                {i.location && (
-                                                    <a
-                                                        target="_blank"
-                                                        href={`https://www.google.com/maps?q=${encodeURIComponent(i.location)}`}
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <Badge className="bg-lime-200 font-bold text-[12.5px] inline-flex items-center gap-1">
-                                                            <MapPinned />
-                                                            {i.location}
-                                                        </Badge>
-                                                    </a>
-                                                )}
-                                            </div>
-                                            <div>
-                                                <Badge className="bg-lime-200 font-bold text-[12.5px] inline-flex items-center gap-1">
-                                                    <ImageIcon />
-                                                    {i.image.length} images
-                                                </Badge>
-                                            </div>
-                                        </CardDescription>
-                                    </CardHeader>
-                                </Card>
+                                <div key={idx}>
+                                    <Card className="w-full" key={idx}>
+                                        <CardContent>
+                                            <Carousel className="w-full">
+                                                <CarouselContent>
+                                                    <PhotoProvider>
+                                                        {i.image.map((img, imgIdx) => (
+                                                            <CarouselItem key={imgIdx}>
+                                                                <PhotoView
+                                                                    src={
+                                                                        "_next/image?url=" +
+                                                                        encodeURIComponent(img.url) +
+                                                                        "&w=1080&q=100"
+                                                                    }
+                                                                >
+                                                                    <div>
+                                                                        <Image
+                                                                            quality={100}
+                                                                            src={img.url}
+                                                                            alt={`Image ${imgIdx}`}
+                                                                            className="aspect-video w-full rounded-2xl object-cover"
+                                                                            width={250}
+                                                                            height={200}
+                                                                            priority={false}
+                                                                        />
+                                                                    </div>
+                                                                </PhotoView>
+                                                            </CarouselItem>
+                                                        ))}
+                                                    </PhotoProvider>
+                                                </CarouselContent>
+                                            </Carousel>
+                                        </CardContent>
+                                        <CardHeader>
+                                            <CardTitle><p className={'text-xl'}>{i.date}</p></CardTitle>
+                                            <CardDescription className={'flex gap-2 overflow-x-auto'}>
+                                                <div className="">
+                                                    {i.location && (
+                                                        <a
+                                                            target="_blank"
+                                                            href={`https://www.google.com/maps?q=${encodeURIComponent(i.location)}`}
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            <Badge className="bg-lime-200 font-bold text-[12.5px] inline-flex items-center gap-1">
+                                                                <MapPinned />
+                                                                {i.location}
+                                                            </Badge>
+                                                        </a>
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <Badge className="bg-lime-200 font-bold text-[12.5px] inline-flex items-center gap-1">
+                                                        <ImageIcon />
+                                                        {i.image.length} images
+                                                    </Badge>
+                                                </div>
+                                            </CardDescription>
+                                        </CardHeader>
+                                    </Card>
+                                    <br />
+                                </div>
                             ))}
                         </div>
+
                     )}
                 </div>
             </div>
