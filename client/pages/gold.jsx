@@ -24,7 +24,7 @@ const Gold = ({ posts }) => {
 
     const theme = {
         text: 'text-t-d-golden',
-        background: 'bg-golden',
+        background: 'bg-amber-200',
     }
 
     return (
@@ -46,7 +46,7 @@ const Gold = ({ posts }) => {
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <button onClick={() => { router.push('/') }}>
-                                        <Leaf className={'w-5 h-5 text-lime-300'}/>
+                                        <Leaf className={'w-5 h-5 text-lime-300 cursor-pointer'}/>
                                     </button>
                                 </TooltipTrigger>
                                 <TooltipContent className={'bg-lime-200 fill-lime-200'}>
