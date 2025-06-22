@@ -7,6 +7,10 @@
   color: #E5CA73
 }
 
+.text-t-d-golden {
+  color: #87711f
+}
+
 .text-t-golden {
   color: #e4bf4f
 }
@@ -28,7 +32,7 @@
 }
 
 .bg-golden {
-  background-color: #E5CA73
+  background-color: #e4bf4f
 }
 
 @font-face {

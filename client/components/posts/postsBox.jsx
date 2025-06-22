@@ -6,7 +6,7 @@ import {Badge} from "@/components/ui/badge";
 import {ImageIcon, MapPinned} from "lucide-react";
 import 'react-photo-view/dist/react-photo-view.css';
 
-const PostsBox = ({posts}) => {
+const PostsBox = ({posts, theme, isGoldVersion}) => {
 
     return (
         <>
@@ -21,21 +21,37 @@ const PostsBox = ({posts}) => {
                                             <CarouselItem key={id}>
                                                 <PhotoView
                                                     src={
-                                                        "_next/image?url=" +
-                                                        encodeURIComponent(img.url) +
-                                                        "&w=1080&q=100"
+                                                        isGoldVersion ?
+                                                            (img.hd)
+                                                            :
+                                                            "_next/image?url=" +
+                                                            encodeURIComponent(img.url) +
+                                                            "&w=1080&q=100"
                                                     }
                                                 >
                                                     <div>
-                                                        <Image
-                                                            quality={100}
-                                                            src={img.url}
-                                                            alt={`Image ${id}`}
-                                                            className="aspect-video w-full rounded-2xl object-cover"
-                                                            width={250}
-                                                            height={200}
-                                                            priority={false}
-                                                        />
+                                                        {
+                                                            isGoldVersion ?
+                                                                (
+                                                                    <img
+                                                                        src={img.hd}
+                                                                        alt={`Image ${id}`}
+                                                                        className="aspect-video w-full rounded-2xl object-cover"
+                                                                        width={250}
+                                                                        height={200}
+                                                                    />
+                                                                ) : (
+                                                                    <Image
+                                                                        quality={100}
+                                                                        src={img.url}
+                                                                        alt={`Image ${id}`}
+                                                                        className="aspect-video w-full rounded-2xl object-cover"
+                                                                        width={250}
+                                                                        height={200}
+                                                                        priority={false}
+                                                                    />
+                                                                )
+                                                        }
                                                     </div>
                                                 </PhotoView>
                                             </CarouselItem>
@@ -49,7 +65,7 @@ const PostsBox = ({posts}) => {
                                 <p className={'text-xl'}>{i.date}</p>
                                 <div>
                                     <Badge
-                                        className="bg-lime-200 h-5 font-bold text-[12.5px] inline-flex items-center gap-1">
+                                        className={`${theme.background} ${theme.text} h-5 font-bold text-[12.5px] inline-flex items-center gap-1`}>
                                         <ImageIcon/>
                                         {i.image.length} images
                                     </Badge>
@@ -64,7 +80,7 @@ const PostsBox = ({posts}) => {
                                             rel="noopener noreferrer"
                                         >
                                             <Badge
-                                                className="bg-lime-200 font-bold text-[12.5px] inline-flex items-center gap-1">
+                                                className={`${theme.background} ${theme.text} font-bold text-[12.5px] inline-flex items-center gap-1`}>
                                                 <MapPinned/>
                                                 {i.location}
                                             </Badge>
