@@ -5,7 +5,7 @@ import Image from "next/image";
 import {Badge} from "@/components/ui/badge";
 import {ImageIcon, MapPinned, Gem, FolderHeart} from "lucide-react";
 import 'react-photo-view/dist/react-photo-view.css';
-import {
+/*import {
     Dialog,
     DialogClose,
     DialogContent,
@@ -15,7 +15,7 @@ import {
     DialogTitle,
     DialogTrigger
 } from "@/components/ui/dialog"
-import {Input} from "@/components/ui/input";
+import {Input} from "@/components/ui/input";*/
 
 const PostsBox = ({posts, theme, isGoldVersion}) => {
 
@@ -44,13 +44,12 @@ const PostsBox = ({posts, theme, isGoldVersion}) => {
                                                 >
                                                     <div>
                                                         <Image
-                                                            quality={100}
+                                                            quality={isGoldVersion ? 100 : 80}
                                                             src={isGoldVersion ? img.hd : img.url}
                                                             alt={`Image ${id}`}
                                                             className="aspect-video w-full rounded-2xl object-cover"
                                                             width={250}
                                                             height={200}
-                                                            priority={false}
                                                         />
                                                     </div>
                                                 </PhotoView>
@@ -80,7 +79,7 @@ const PostsBox = ({posts, theme, isGoldVersion}) => {
                             </CardTitle>
                             <CardDescription className={'flex gap-2 overflow-x-auto'}>
                                 <div className="">
-                                    {isGoldVersion && (
+                                    {/*isGoldVersion && (
                                         <Dialog>
                                             <DialogTrigger asChild>
                                                 <button>
@@ -116,7 +115,7 @@ const PostsBox = ({posts, theme, isGoldVersion}) => {
                                                 </DialogFooter>
                                             </DialogContent>
                                         </Dialog>
-                                    )}
+                                    )*/}
                                     {i.location && (
                                         <a
                                             target="_blank"
