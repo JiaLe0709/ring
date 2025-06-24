@@ -68,13 +68,13 @@ const PostsBox = ({posts, theme, isGoldVersion}) => {
                                         <ImageIcon/>
                                         {i.image.length} image{(i.image.length > 1) && 's'}
                                     </Badge>
-                                    {isGoldVersion && (
+                                    {/*isGoldVersion && (
                                         <Badge
                                             className={`${theme.background} ${theme.text} font-bold text-[12.5px] inline-flex items-center gap-1`}>
                                             <Gem/>
                                             HD
                                         </Badge>
-                                    )}
+                                    )*/}
                                 </div>
                             </CardTitle>
                             <CardDescription className={'flex gap-2 overflow-x-auto'}>

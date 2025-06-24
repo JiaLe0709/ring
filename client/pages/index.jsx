@@ -41,18 +41,20 @@ const Home = ({ posts }) => {
                             />
                             Ring
                         </h1>
-                        <Tooltip>
+                        {/*<Tooltip>
                             <TooltipTrigger asChild>
-                                <button onClick={() => { router.push('/gold') }}>
+                                <button onClick={() => {
+                                    router.push('/gold')
+                                }}>
                                     <Gem className={'w-5 h-5 dot-golden cursor-pointer'}/>
                                 </button>
                             </TooltipTrigger>
                             <TooltipContent className={'bg-amber-200 fill-amber-200 text-t-d-golden'}>
                                 <p>View Golden Version</p>
                             </TooltipContent>
-                        </Tooltip>
+                        </Tooltip>*/}
                     </div>
-                    <PostsBox posts={posts} theme={theme} isGoldVersion={false}/>
+                    <PostsBox posts={posts} theme={theme} isGoldVersion={true}/>
                 </div>
             </div>
         </Layout>
