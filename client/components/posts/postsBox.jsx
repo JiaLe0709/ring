@@ -3,7 +3,7 @@ import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel"
 import {PhotoProvider, PhotoView} from "react-photo-view";
 import Image from "next/image";
 import {Badge} from "@/components/ui/badge";
-import {ImageIcon, MapPinned, Gem, FolderHeart} from "lucide-react";
+import {ImageIcon, MapPinned} from "lucide-react";
 import 'react-photo-view/dist/react-photo-view.css';
 /*import {
     Dialog,
@@ -17,7 +17,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 } from "@/components/ui/dialog"
 import {Input} from "@/components/ui/input";*/
 
-const PostsBox = ({posts, theme, isGoldVersion}) => {
+const PostsBox = ({posts, theme}) => {
 
     return (
         <>
@@ -32,11 +32,6 @@ const PostsBox = ({posts, theme, isGoldVersion}) => {
                                             <CarouselItem key={id}>
                                                 <PhotoView
                                                     src={
-                                                        isGoldVersion ?
-                                                            "_next/image?url=" +
-                                                            encodeURIComponent(img.hd) +
-                                                            "&w=1080&q=100"
-                                                            :
                                                             "_next/image?url=" +
                                                             encodeURIComponent(img.url) +
                                                             "&w=1080&q=100"
@@ -44,8 +39,8 @@ const PostsBox = ({posts, theme, isGoldVersion}) => {
                                                 >
                                                     <div>
                                                         <Image
-                                                            quality={isGoldVersion ? 100 : 80}
-                                                            src={isGoldVersion ? img.hd : img.url}
+                                                            quality={100}
+                                                            src={img.url}
                                                             alt={`Image ${id}`}
                                                             className="aspect-video w-full rounded-2xl object-cover"
                                                             width={250}

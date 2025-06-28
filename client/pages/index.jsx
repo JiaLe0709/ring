@@ -54,7 +54,7 @@ const Home = ({ posts }) => {
                             </TooltipContent>
                         </Tooltip>*/}
                     </div>
-                    <PostsBox posts={posts} theme={theme} isGoldVersion={true}/>
+                    <PostsBox posts={posts} theme={theme} />
                 </div>
             </div>
         </Layout>
