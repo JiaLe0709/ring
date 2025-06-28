@@ -2,9 +2,7 @@ import Layout from "@/layouts/global";
 import Image from "next/image";
 import { getPosts } from "@/lib/posts";
 import PostsBox from "@/components/posts/postsBox";
-import { Gem } from "lucide-react";
-import {useRouter} from "next/router";
-import { Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip"
+//import {useRouter} from "next/router";
 
 export async function getStaticProps() {
     const posts = await getPosts();
@@ -24,7 +22,7 @@ const Home = ({ posts }) => {
         background: 'bg-lime-200',
     }
 
-    const router = useRouter();
+    //const router = useRouter();
 
     return (
         <Layout>
@@ -41,18 +39,6 @@ const Home = ({ posts }) => {
                             />
                             Ring
                         </h1>
-                        {/*<Tooltip>
-                            <TooltipTrigger asChild>
-                                <button onClick={() => {
-                                    router.push('/gold')
-                                }}>
-                                    <Gem className={'w-5 h-5 dot-golden cursor-pointer'}/>
-                                </button>
-                            </TooltipTrigger>
-                            <TooltipContent className={'bg-amber-200 fill-amber-200 text-t-d-golden'}>
-                                <p>View Golden Version</p>
-                            </TooltipContent>
-                        </Tooltip>*/}
                     </div>
                     <PostsBox posts={posts} theme={theme} />
                 </div>
