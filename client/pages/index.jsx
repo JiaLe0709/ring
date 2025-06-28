@@ -59,7 +59,7 @@ const Home = ({posts}) => {
                                             <CalendarArrowUp className={'w-5 h-5'}/>
                                         </TooltipTrigger>
                                         <TooltipContent className={'bg-lime-200 fill-lime-200'}>
-                                            <p>New to Old</p>
+                                            <p>Current: New to Old</p>
                                         </TooltipContent>
                                     </Tooltip>
 
@@ -70,7 +70,7 @@ const Home = ({posts}) => {
                                             <CalendarArrowDown className={'w-5 h-5'}/>
                                         </TooltipTrigger>
                                         <TooltipContent className={'bg-lime-200 fill-lime-200'}>
-                                            <p>Old to New</p>
+                                            <p>Current: Old to New</p>
                                         </TooltipContent>
                                     </Tooltip>
                                 )
