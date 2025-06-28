@@ -11,8 +11,8 @@ const PostsPage = ({posts, theme}) => {
 
     return (
         <>
-            {posts
-                .map((i, id) => (
+            {posts && 
+                posts.map((i, id) => (
                     <div key={id}>
                         <div className="flex justify-between items-center mb-1 mt-3">
                             <h1 className="text-t-green font-bold text-2xl flex items-center">
