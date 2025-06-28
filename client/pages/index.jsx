@@ -1,8 +1,11 @@
 import Layout from "@/layouts/global";
 import Image from "next/image";
-import { getPosts } from "@/lib/posts";
+import {getPosts} from "@/lib/posts";
 import PostsBox from "@/components/posts/postsBox";
 //import {useRouter} from "next/router";
+import {CalendarArrowUp, CalendarArrowDown} from "lucide-react";
+import {useState} from "react";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip"
 
 export async function getStaticProps() {
     const posts = await getPosts();
@@ -15,7 +18,11 @@ export async function getStaticProps() {
     };
 }
 
-const Home = ({ posts }) => {
+const Home = ({posts}) => {
+
+    // Ascending Order: Old to New
+    // Default: New to Old, (b - a) > 0 (Descending), Arrow UP
+    const [order, setOrder] = useState('desc');
 
     const theme = {
         text: '',
@@ -39,8 +46,38 @@ const Home = ({ posts }) => {
                             />
                             Ring
                         </h1>
+                        <button
+                            onClick={() => {
+                                setOrder((order === 'desc') ? 'asc' : 'desc')
+                            }}
+                            className={'text-lime-200 cursor-pointer'}
+                        >
+                            {order === 'desc' ?
+                                (
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <CalendarArrowUp className={'w-5 h-5'}/>
+                                        </TooltipTrigger>
+                                        <TooltipContent className={'bg-lime-200 fill-lime-200'}>
+                                            <p>New to Old</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+
+                                ) :
+                                (
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <CalendarArrowDown className={'w-5 h-5'}/>
+                                        </TooltipTrigger>
+                                        <TooltipContent className={'bg-lime-200 fill-lime-200'}>
+                                            <p>Old to New</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                )
+                            }
+                        </button>
                     </div>
-                    <PostsBox posts={posts} theme={theme} />
+                    <PostsBox posts={posts} theme={theme} order={order}/>
                 </div>
             </div>
         </Layout>
