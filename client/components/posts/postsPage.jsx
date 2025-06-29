@@ -16,7 +16,7 @@ const PostsPage = ({posts, theme}) => {
             {posts && 
                 posts.map((i, id) => (
                     <div key={id}>
-                        <div className="flex justify-between items-center mb-1 mt-3">
+                        <div className="flex justify-between items-center mb-1 mt-2">
                             <h1 className="text-t-green font-bold text-2xl flex items-center">
                                 <Image
                                     alt="Icon"
@@ -32,7 +32,7 @@ const PostsPage = ({posts, theme}) => {
                                     onClick={() => {
                                         const shareData = {
                                             title: 'Images 💖',
-                                            text: `Image at ${i.location},on ${i.date}\n`,
+                                            text: `Image at ${i.location}, on ${i.date}\n`,
                                             url: window.location.href,
                                         };
                                         navigator.share(shareData);

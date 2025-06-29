@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import Autoplay from "embla-carousel-autoplay"
 import 'react-photo-view/dist/react-photo-view.css';
 
-const PostsBox = ({posts, theme, order}) => {
+const PostsBox = ({posts, theme, order, carousel}) => {
 
     // order = true: New to Old
     const router = useRouter();
@@ -29,6 +29,7 @@ const PostsBox = ({posts, theme, order}) => {
                                     plugins={[
                                         Autoplay({
                                             delay: 2300,
+                                            active: !!carousel,
                                         }),
                                     ]}>
                                     <CarouselContent>
