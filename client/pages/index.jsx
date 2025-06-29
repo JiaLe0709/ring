@@ -6,6 +6,8 @@ import PostsBox from "@/components/posts/postsBox";
 import {CalendarArrowUp, CalendarArrowDown} from "lucide-react";
 import {useState} from "react";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip"
+import React from 'react';
+import { FloatButton } from 'antd';
 
 export async function getStaticProps() {
     const posts = await getPosts();
@@ -80,6 +82,7 @@ const Home = ({posts}) => {
                     <PostsBox posts={posts} theme={theme} order={order}/>
                 </div>
             </div>
+            <FloatButton.BackTop />
         </Layout>
     )
 }

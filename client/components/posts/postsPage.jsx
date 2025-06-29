@@ -3,6 +3,8 @@ import Image from "next/image";
 import {Badge} from "@/components/ui/badge";
 import {ImageIcon, MapPinned, X, Send} from "lucide-react";
 import {useRouter} from "next/router";
+import React from 'react';
+import { FloatButton } from 'antd';
 import 'react-photo-view/dist/react-photo-view.css';
 
 const PostsPage = ({posts, theme}) => {
@@ -29,15 +31,17 @@ const PostsPage = ({posts, theme}) => {
                                 <Send
                                     onClick={() => {
                                         const shareData = {
-                                            title: i.date,
-                                            text: 'Image on '+ i.date,
+                                            title: 'Images 💖',
+                                            text: `Image at ${i.location},on ${i.date}\n`,
                                             url: window.location.href,
                                         };
                                         navigator.share(shareData);
                                     }}
                                     className={'text-cyan-400 w-5 h-5 cursor-pointer '}
                                 />
-                                <X className={'text-red-400 w-6 h-6 cursor-pointer '} onClick={() => { router.push('/') }}/>
+                                <p onClick={() => { router.push('/') }} className={'flex'}>
+                                    <X className={'text-red-400 w-7 h-7 cursor-pointer font-bold ml-1'}/>
+                                </p>
                             </div>
                         </div>
                         <div className={'flex gap-1 mt-1 mb-5'}>
@@ -93,6 +97,7 @@ const PostsPage = ({posts, theme}) => {
                         </PhotoProvider>
                     </div>
                 ))}
+            <FloatButton.BackTop />
         </>
     )
 }

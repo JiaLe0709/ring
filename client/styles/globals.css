@@ -3,6 +3,37 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  --c-bg: #111;
+  --c-scrollbar-hover: #2c2b2b;
+  --c-scrollbar: #323131;
+}
+
+
+html {
+  --scrollbarBG: #ffffff00;
+  --thumbBG: #b8b8b8;
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
+  background: var(--c-bg);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-scrollbar);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-scrollbar-hover);
+}
+
 .dot-golden {
   color: #E5CA73
 }
