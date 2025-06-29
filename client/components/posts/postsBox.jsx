@@ -4,7 +4,8 @@ import {PhotoProvider, PhotoView} from "react-photo-view";
 import Image from "next/image";
 import {Badge} from "@/components/ui/badge";
 import {ImageIcon, MapPinned, ArrowRight} from "lucide-react";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
+import Autoplay from "embla-carousel-autoplay"
 import 'react-photo-view/dist/react-photo-view.css';
 
 const PostsBox = ({posts, theme, order}) => {
@@ -20,10 +21,16 @@ const PostsBox = ({posts, theme, order}) => {
                     (i) => i.image.length > 0
                 )
                 .map((i, id) => (
-                    <div key={id} >
+                    <div key={id}>
                         <Card className="w-full">
                             <CardContent>
-                                <Carousel className="w-full">
+                                <Carousel
+                                    className="w-full"
+                                    plugins={[
+                                        Autoplay({
+                                            delay: 2300,
+                                        }),
+                                    ]}>
                                     <CarouselContent>
                                         <PhotoProvider>
                                             {i.image.map((img, id) => (
@@ -79,7 +86,9 @@ const PostsBox = ({posts, theme, order}) => {
                                             </a>
                                         )}
                                     </div>
-                                    <div onClick={() => { router.push(`/${i.id}`) }}>
+                                    <div onClick={() => {
+                                        router.push(`/${i.id}`)
+                                    }}>
                                         <ArrowRight className={'w-5 h-5 cursor-pointer'}/>
                                     </div>
                                 </CardDescription>
