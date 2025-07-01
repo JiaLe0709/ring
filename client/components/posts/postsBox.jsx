@@ -62,7 +62,7 @@ const PostsBox = ({posts, theme, order, carousel}) => {
                             </CardContent>
                             <CardHeader>
                                 <CardTitle className={'flex gap-2 items-center'}>
-                                    <p className={'text-xl'}>{i.date}</p>
+                                    <p className={'text-xl'}>{`${new Date(i.date).getFullYear()}-${new Date(i.date).getMonth()}-${new Date(i.date).getDate()}`}</p>
                                     <div>
                                         <Badge
                                             className={`${theme.background} mr-2 ${theme.text} h-5 font-bold text-[12.5px] inline-flex items-center gap-1`}>

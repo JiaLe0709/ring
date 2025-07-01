@@ -43,3 +43,5 @@ upload.jsx
 upload.js
 /lib/generated/prisma
 old_index.js
+
+/generated/prisma

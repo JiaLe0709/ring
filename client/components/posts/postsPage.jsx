@@ -4,7 +4,7 @@ import {Badge} from "@/components/ui/badge";
 import {ImageIcon, MapPinned, X, Send} from "lucide-react";
 import {useRouter} from "next/router";
 import React from 'react';
-import { FloatButton } from 'antd';
+import {FloatButton} from 'antd';
 import 'react-photo-view/dist/react-photo-view.css';
 
 const PostsPage = ({posts, theme}) => {
@@ -13,7 +13,7 @@ const PostsPage = ({posts, theme}) => {
 
     return (
         <>
-            {posts && 
+            {posts &&
                 posts.map((i, id) => (
                     <div key={id}>
                         <div className="flex justify-between items-center mb-1 mt-2">
@@ -25,21 +25,23 @@ const PostsPage = ({posts, theme}) => {
                                     width={100}
                                     height={100}
                                 />
-                                {i.date}
+                                {`${new Date(i.date).getFullYear()}-${new Date(i.date).getMonth()}-${new Date(i.date).getDate()}`}
                             </h1>
                             <div className={'flex gap-3 items-center'}>
                                 <Send
                                     onClick={() => {
                                         const shareData = {
                                             title: 'Images 💖',
-                                            text: `Image at ${i.location}, on ${i.date}\n`,
+                                            text: `Image at ${i.location},\n on ${i.date}\n`,
                                             url: window.location.href,
                                         };
                                         navigator.share(shareData);
                                     }}
                                     className={'text-cyan-400 w-5 h-5 cursor-pointer '}
                                 />
-                                <p onClick={() => { router.push('/') }} className={'flex'}>
+                                <p onClick={() => {
+                                    router.push('/')
+                                }} className={'flex'}>
                                     <X className={'text-red-400 w-7 h-7 cursor-pointer font-bold ml-1'}/>
                                 </p>
                             </div>
@@ -97,7 +99,7 @@ const PostsPage = ({posts, theme}) => {
                         </PhotoProvider>
                     </div>
                 ))}
-            <FloatButton.BackTop />
+            <FloatButton.BackTop/>
         </>
     )
 }
