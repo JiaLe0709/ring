@@ -7,13 +7,26 @@ import {useState} from "react";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip"
 import React from 'react';
 import {FloatButton} from 'antd';
+import prisma from '@/lib/prisma'
 
 export async function getStaticProps() {
-    const posts = await getPosts();
+
+    const selected_db_method = process.env.DB_METHOD;
+
+    async function getPostsSources() {
+        switch (selected_db_method) {
+            case 'supabase':
+                return getPosts();
+            case 'postgres':
+                return prisma.posts.findMany();
+        }
+    }
+
+    const posts = await getPostsSources();
 
     return {
         props: {
-            posts
+            posts: JSON.parse(JSON.stringify(posts))
         },
         revalidate: 10,
     };

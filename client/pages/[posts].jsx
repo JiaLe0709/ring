@@ -1,9 +1,22 @@
 import {getPosts, getSpecificPosts} from "@/lib/posts"
 import PostsPage from "@/components/posts/postsPage";
 import Layout from "@/layouts/global";
+import prisma from '@/lib/prisma'
 
 export async function getStaticPaths() {
-    const slugs = await getPosts();
+
+    const selected_db_method = process.env.DB_METHOD;
+
+    async function getPostsSlug() {
+        switch (selected_db_method) {
+            case 'supabase':
+                return getPosts();
+            case 'postgres':
+                return prisma.posts.findMany();
+        }
+    }
+
+    const slugs = await getPostsSlug();
 
     return {
         paths: slugs.map(post => ({
@@ -14,10 +27,28 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-    const post = await getSpecificPosts(params.posts);
+
+    const selected_db_method = process.env.DB_METHOD;
+
+    async function getPostsData(params) {
+        switch (selected_db_method) {
+            case 'supabase':
+                return getSpecificPosts(params);
+            case 'postgres':
+                return prisma.posts.findUnique({
+                    where: {
+                        id: parseInt(params)
+                    }
+                });
+        }
+    }
+
+    const post = await getPostsData(params.posts);
 
     return {
-        props: {post},
+        props: {
+            post: (selected_db_method === 'postgres') ? JSON.parse(JSON.stringify([post])) : post
+        },
         revalidate: 60,
     };
 }
