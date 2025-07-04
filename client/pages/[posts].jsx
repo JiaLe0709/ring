@@ -44,6 +44,12 @@ export async function getStaticProps({params}) {
     }
 
     const post = await getPostsData(params.posts);
+    
+    if (!post) {
+        return {
+            notFound: true
+        }
+    }
 
     return {
         props: {
