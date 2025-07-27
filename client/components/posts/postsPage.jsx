@@ -76,20 +76,17 @@ const PostsPage = ({posts, theme}) => {
                                 <div key={id}>
                                     <PhotoView
 
-                                        src={
-                                            "_next/image?url=" +
-                                            encodeURIComponent(`${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.sources}/${img.item}`) +
-                                            "&w=1080&q=100"
-                                        }
+                                        src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                     >
                                         <div>
                                             <Image
                                                 quality={100}
-                                                src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/${img.sources}/${img.item}`}
+                                                src={`${process.env.NEXT_PUBLIC_SOURCES_URL}/o/${img.sources}/${img.item}`}
                                                 alt={`Image ${id + 1}`}
                                                 className="aspect-video w-full rounded-xl object-cover"
                                                 width={250}
                                                 height={200}
+                                                unoptimized={true}
                                             />
                                         </div>
                                     </PhotoView>
