@@ -48,7 +48,7 @@ const Home = ({posts}) => {
 
     return (
         <Layout>
-            <div className="flex justify-center min-h-screen">
+            <div className="flex justify-center min-h-screen p-4">
                 <div className="w-full max-w-md">
                     <div className="flex justify-between items-center mb-8">
                         <h1 className="text-t-green font-bold text-2xl flex items-center">

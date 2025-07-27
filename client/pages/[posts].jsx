@@ -43,20 +43,27 @@ export async function getStaticProps({params}) {
         }
     }
 
-    const post = await getPostsData(params.posts);
-    
-    if (!post) {
+    try {
+        const post = await getPostsData(params.posts);
+
+        if (!post) {
+            return {
+                notFound: true
+            }
+        }
+
+        return {
+            props: {
+                post: (selected_db_method === 'postgres') ? JSON.parse(JSON.stringify([post])) : post
+            },
+            revalidate: 60,
+        };
+
+    } catch (e) {
         return {
             notFound: true
         }
     }
-
-    return {
-        props: {
-            post: (selected_db_method === 'postgres') ? JSON.parse(JSON.stringify([post])) : post
-        },
-        revalidate: 60,
-    };
 }
 
 const Posts = ({post}) => {
@@ -67,14 +74,15 @@ const Posts = ({post}) => {
     }
 
     return (
-        <Layout>
-            <div className="flex justify-center min-h-screen">
-                <div className="w-full max-w-md">
-                    <PostsPage posts={post} theme={theme}/>
+        <>
+            <Layout>
+                <div className="flex justify-center min-h-screen p-4">
+                    <div className="w-full max-w-md">
+                        <PostsPage posts={post} theme={theme}/>
+                    </div>
                 </div>
-            </div>
-        </Layout>
-
+            </Layout>
+        </>
     );
 };
 
